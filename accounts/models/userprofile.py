@@ -5,8 +5,7 @@ from django.utils.translation import gettext_lazy as _
 class UserProfile(models.Model):
     GENDER = [('MALE', 'MALE'), ('FEMALE', 'FEMALE'), ('OTHER', 'OTHER')]
 
-    first_name = models.CharField(_('First Name'), max_length=20)
-    last_name = models.CharField(_('Last Name'), max_length=20)
+    name = models.CharField(_('Name'), max_length=20)
     email = models.EmailField(_('Email'), max_length=200, unique=True)
     phone = models.CharField(_('Phone Number'), max_length=200, null=True, blank=True)
     birthday = models.DateField(_('Birth Date'))

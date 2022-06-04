@@ -10,8 +10,7 @@ class NGO_User(AbstractUser):
     GENDER = [('MALE', 'MALE'), ('FEMALE', 'FEMALE'), ('OTHER', 'OTHER')]
     username = None
     email = models.EmailField(_("Email"), max_length=254, unique=True)
-    first_name = models.CharField(_("First Name"),max_length=30, blank=True)
-    last_name = models.CharField(_("Last Name"),max_length=30, blank=True)
+    name = models.CharField(_("User Name"),max_length=30, blank=True)
     phone_number = models.CharField(_("Phone Number"), max_length=12, unique=False, blank=True)
     # subscription = models.CharField(_('Subscription'), max_length=8, choices=SUBSCRIPTIONS, default='FREE')
     subscription = models.ForeignKey(SubscriptionType, on_delete=models.CASCADE, verbose_name='Subscription Type', blank=True, null=True)
