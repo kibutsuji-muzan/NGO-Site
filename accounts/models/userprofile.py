@@ -10,7 +10,6 @@ class UserProfile(models.Model):
     phone = models.CharField(_('Phone Number'), max_length=200, null=True, blank=True)
     birthday = models.DateField(_('Birth Date'))
     gender = models.CharField(_('Gender'), max_length=6, choices=GENDER)
-    address = models.CharField(_('Address'), max_length=40)
     user = models.OneToOneField(NGO_User, on_delete=models.CASCADE, verbose_name=_("User"))
 
     def __str__(self):
