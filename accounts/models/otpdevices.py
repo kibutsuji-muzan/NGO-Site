@@ -46,8 +46,8 @@ class VerificationDevice(Device):
 
     def totp_obj(self):
         totp = TOTP(key=self.bin_key, step=self.step, digits=self.digits)
-        time.time()
-        # totp.time = time()
+        # time.time()
+        totp.time = time()
         return totp
 
     def generate_challenge(self):

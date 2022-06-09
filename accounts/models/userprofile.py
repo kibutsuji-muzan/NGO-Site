@@ -13,16 +13,16 @@ class UserProfile(models.Model):
     user = models.OneToOneField(NGO_User, on_delete=models.CASCADE, verbose_name=_("User"))
 
     def __str__(self):
-        full_name = self.first_name + self.last_name
+        full_name = self.name
         return full_name
 
-class ProfileImage(models.Model):
+# class ProfileImage(models.Model):
 
-    image = models.ImageField(_("Image"), upload_to="ProfileImages/", default="ProfileImages/default.png")
-    alt_txt = models.CharField(_("Alternative Text"), max_length=20, default="Your Profile Image")
-    created_at = models.DateTimeField(_("Created On"),auto_now=True,editable=False)
-    updated_at = models.DateTimeField(_("Updated At"), auto_now=True)
-    profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE, verbose_name=_("Profile"))
+#     image = models.ImageField(_("Image"), upload_to="ProfileImages/", default="ProfileImages/default.png")
+#     alt_txt = models.CharField(_("Alternative Text"), max_length=20, default="Your Profile Image")
+#     created_at = models.DateTimeField(_("Created On"),auto_now=True,editable=False)
+#     updated_at = models.DateTimeField(_("Updated At"), auto_now=True)
+#     profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE, verbose_name=_("Profile"))
     
-    class Meta:
-        verbose_name = _("Profile Image")
+#     class Meta:
+#         verbose_name = _("Profile Image")

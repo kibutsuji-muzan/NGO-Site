@@ -1,7 +1,7 @@
 from django.contrib import admin
-from main.models import donation
-from main.models.donation import * 
-from main.models.extras import * 
+from siteapps.models import donation
+from siteapps.models.donation import * 
+from siteapps.models.extras import * 
 # Register your models here.
 
 admin.site.register(donation)

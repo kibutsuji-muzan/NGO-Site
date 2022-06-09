@@ -1,79 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+{% extends 'base.html' %}
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="{% static 'Sign-up-in/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
-    <!-- Main css -->
-    <link rel="stylesheet" href="{% static 'Sign-up-in/css/style.css' %}">
-</head>
-<body>
+{% block signup %}
 
-    <div class="main">
+{% load static %}
         <section class="signup">
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title" style="margin-bottom:10px">Sign up</h2>
+                        {% if error %}
+                        <h3 class="form-title" style="margin-top:0px;font-height:0px; color:#CA1500;">{{ error }}</h3>
+                        {% else %}
+                        <h3 class="form-title" style="margin-top:0px;font-height:0px">Fill Form Correctly</h3>
+                        {% endif %}
                         <form method="POST" class="register-form" id="register-form">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <label {% if form.name.errors %}style="color:#CA1500;"{% endif %} for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 {{ form.name }}
                             </div>
 
                             <div class="form-group">
-                                <label for="phonenumber"><i class="zmdi zmdi-phone material-icons-name"></i></label>
+                                <label {% if form.phone.errors %}style="color:#CA1500;"{% endif %} for="phonenumber"><i class="zmdi zmdi-phone material-icons-name"></i></label>
                                 {{ form.phone }}
                             </div>
                                                         
                             <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <label {% if form.email.errors %}style="color:#CA1500;"{% endif %} for="email"><i class="zmdi zmdi-email"></i></label>
                                 {{ form.email }}
                             </div>
                             
                             <div class="form-group">
-                                <label for="birthday"><i class="zmdi zmdi-cake material-icons-name"></i></label>
+                                <label {% if form.birthday.errors %}style="color:#CA1500;"{% endif %} for="birthday"><i class="zmdi zmdi-cake material-icons-name"></i></label>
                                 {{ form.birthday }}
                             </div>
 
                             <div class="form-group">
                                 <div class="wrapper">
-                                    <label style="position:relative" for="birthday"><i class="zmdi zmdi-male-female material-icons-name"></i></label>
-                                    <input type="radio" name="select" id="option-1" value="FEMALE">
-                                    <label style="position:relative" for="option-1" class="option option-1">
+                                    <label {% if form.gender.errors %}style="color:#CA1500;"{% endif %} style="position:relative" for="birthday" ><i class="zmdi zmdi-male-female material-icons-name" ></i></label>
+                                    <input type="radio" class="q" name="gender" id="female" value="FEMALE">
+                                    <label style="position:relative" for="female" class="option option-1" onclick="func('q')">
                                         <span>Female</span>
                                     </label>
 
-                                    <input type="radio" name="select" id="option-2" value="MALE">
-                                    <label style="position:relative" for="option-2" class="option option-2">
+                                    <input type="radio" class="r" name="gender" id="male" value="MALE">
+                                    <label style="position:relative" for="male" class="option option-2" onclick="func('r')">
                                         <span>Male</span>
                                     </label>
                                     
-                                    <input type="radio" name="select" id="option-3" value="OTHER">
-                                    <label style="position:relative" for="option-3" class="option option-3">
+                                    <input type="radio" class="s" name="gender" id="other" value="OTHER">
+                                    <label style="position:relative" for="other" class="option option-3" onclick="func('s')">
                                         <span>OTHER</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="password1"><i class="zmdi zmdi-lock"></i></label>
+                                <label {% if form.password1.errors %}style="color:#CA1500;"{% endif %} for="password1"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password1" id="password1" placeholder="Password"/>
                             </div>
                             <div class="form-group">
-                                <label for="password2"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <label {% if form.password2.errors %}style="color:#CA1500;"{% endif %} for="password2"><i class="zmdi zmdi-lock-outline"></i></label>
                                 <input type="password" name="password2" id="password2" placeholder="Repeat your password"/>
                             </div>
-                            <div class="form-group">
+                            {% comment %} <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
+                                <label {% if error %}style="color:#CA1500;"{% endif %} for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div> {% endcomment %}
                             <div class="form-group form-button">
                                 <input style="border-radius: 2rem" type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
                             </div>
@@ -86,8 +79,4 @@
                 </div>
             </div>
         </section>
-    <!-- JS -->
-    <script src="{% static 'Sign-up-in/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'Sign-up-in/js/main.js' %}"></script>
-</body>
-</html>
+{% endblock signup %}

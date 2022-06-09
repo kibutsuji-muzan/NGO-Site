@@ -627,15 +627,15 @@ input[type="radio"]{
   display: none;
 }
 
-#option-1:checked:checked ~ .option-1,
-#option-2:checked:checked ~ .option-2,
-#option-3:checked:checked ~ .option-3{
+#female:checked:checked ~ .option-1,
+#male:checked:checked ~ .option-2,
+#other:checked:checked ~ .option-3{
   border-color: #FF9900;
   background: #FF9900;
 }
-#option-1:checked:checked ~ .option-1 span,
-#option-2:checked:checked ~ .option-2 span,
-#option-3:checked:checked ~ .option-3 span{
+#female:checked:checked ~ .option-1 span,
+#male:checked:checked ~ .option-2 span,
+#other:checked:checked ~ .option-3 span{
   color: #fff;
 }
 .wrapper .option span{
@@ -669,4 +669,9 @@ input[type="date"], focus {
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
+}
+
+a{
+  text-decoration: none;
+  color: #95a5a6;
 }

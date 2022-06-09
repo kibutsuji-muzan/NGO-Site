@@ -10,7 +10,7 @@ class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=60, required=True, widget=forms.EmailInput(attrs={'id':"email", 'placeholder':"Your Email"}))
     phone = forms.CharField(max_length=12, required=True, widget=forms.TextInput(attrs={'id':"phonenumber", 'placeholder':"Phone Number"}))
     name = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={'id':"name", 'placeholder':"Your Name"}))
-    birthday = forms.DateField(label="birthday", required=True, widget=forms.DateInput(attrs={'id':"birthday", 'placeholder':"Birthday"}))
+    birthday = forms.DateField(label="birthday", required=True, widget=forms.DateInput(attrs={'id':"birthday", 'placeholder':"Birthday", 'type':'date'}))
     gender = forms.CharField(required=True, widget=forms.RadioSelect(choices=CHOICES, attrs={'id':"option-1"}))
 
     class Meta:

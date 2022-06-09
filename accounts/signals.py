@@ -8,12 +8,12 @@ from django.contrib.auth import user_logged_in, user_logged_out
 @receiver(post_save, sender=NGO_User)
 def CreateOtp(sender, instance, created, **kwargs):
     if created:
-        VerificationDevice.objects.create(unverified_phone=instance.email, user = instance)
+        VerificationDevice.objects.create(unverified_phone=instance.email, user = instance, name=instance.name)
 
 @receiver(post_save, sender=NGO_User)
 def createProfile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.create(first_name=instance.first_name, last_name= instance.last_name,email = instance.email, phone= instance.phone_number, birthday = instance.birthday, gender = instance.gender,user = instance)
+        UserProfile.objects.create(name=instance.name, email = instance.email, phone= instance.phone, birthday = instance.birthday, gender = instance.gender, user = instance)
 
 @receiver(user_logged_in)
 def on_user_logged_in(sender, request, **kwargs):

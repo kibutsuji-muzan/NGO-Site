@@ -11,8 +11,8 @@ class OneSessionPerUserMiddleware:
         if request.user.is_authenticated:
             stored_session_key = request.user.logged_in_user.session_key
 
-            # client_ip = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', '')).split(',')[0].strip()
-            # user_agent = request.META['HTTP_USER_AGENT']
+            client_ip = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', '')).split(',')[0].strip()
+            user_agent = request.META['HTTP_USER_AGENT']
 
             # if there is a stored_session_key  in our database and it is
             # different from the current session, delete the stored_session_key
@@ -20,8 +20,8 @@ class OneSessionPerUserMiddleware:
             if stored_session_key and stored_session_key != request.session.session_key:
                  Session.objects.get(session_key=stored_session_key).delete()
 
-            # request.user.logged_in_user.user_agent = user_agent
-            # request.user.logged_in_user.client_ip = client_ip
+            request.user.logged_in_user.user_agent = user_agent
+            request.user.logged_in_user.client_ip = client_ip
             request.user.logged_in_user.session_key = request.session.session_key
             request.user.logged_in_user.save()
 

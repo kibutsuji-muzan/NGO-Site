@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 #Manuall Apps
     'accounts.apps.AccountsConfig',
+    'siteapps.apps.SiteappsConfig'
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,32 @@ STATIC_DIR = '/static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Media files 
+
+MEDIA_URL = '/sus/you/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+#Email
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER ='heller.james7348@gmail.com'
+EMAIL_HOST_PASSWORD = '@rafatnaeem786'
+
+# #Sessions
+
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# #--For HTTPS--# 
+# SESSION_COOKIE_SECURE = False
+# #-------------#
+
+# SESSION_COOKIE_NAME = 'jansevasite'
+# SESSION_COOKIE_DOMAIN = '127.0.0.1'
+# SESSION_COOKIE_AGE = 3600
