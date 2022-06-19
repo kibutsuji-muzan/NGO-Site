@@ -9,6 +9,8 @@ psycopg2-binary = "*"
 django-otp = "*"
 django-mptt = "*"
 pillow = "*"
+paytmchecksum = "*"
+pycrypto = "*"
 
 [dev-packages]
 

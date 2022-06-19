@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from accounts.manager import NGO_UserManager
 from django.utils import timezone
-from accounts.models.subscriptions import SubscriptionType
+from siteapps.models.subscriptions import SubscriptionType
 
 class NGO_User(AbstractUser):
     # SUBSCRIPTIONS = [('SILVER','SILVER'),('GOLD','GOLD'),('PLATINUM','PLATINUM'),('FREE','FREE')]

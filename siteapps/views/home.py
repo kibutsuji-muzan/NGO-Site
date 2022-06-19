@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-
+from siteapps.models.subscriptions import SubscriptionType
 class IndexView(View):
 
     def get(self, request):
@@ -8,4 +8,7 @@ class IndexView(View):
             del request.session['email']
         except:
             pass
-        return render(request, 'index.html') 
+
+        subs = SubscriptionType.objects.all()
+        
+        return render(request, 'index.html', {"subsType":subs})

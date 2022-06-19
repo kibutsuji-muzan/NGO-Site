@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "decf1904abdfb725a8ed4bfecccedfc9ed6fb6acab81e9f952ae8b8dc1bddd86"
+            "sha256": "b1cbe03d29db22fc0225eb4d605ffd932c4a4f9281143e4d07bdb515144504c8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -55,6 +55,13 @@
             ],
             "index": "pypi",
             "version": "==1.1.3"
+        },
+        "paytmchecksum": {
+            "hashes": [
+                "sha256:a8866eb98891d86d4b089ece3a2fce22fd960ba2d27cf8679e3c07a17e9349cd"
+            ],
+            "index": "pypi",
+            "version": "==1.7.0"
         },
         "pillow": {
             "hashes": [
@@ -161,6 +168,13 @@
             ],
             "index": "pypi",
             "version": "==2.9.3"
+        },
+        "pycrypto": {
+            "hashes": [
+                "sha256:f2ce1e989b272cfcb677616763e0a2e7ec659effa67a88aa92b3a65528f60a3c"
+            ],
+            "index": "pypi",
+            "version": "==2.6.1"
         },
         "sqlparse": {
             "hashes": [

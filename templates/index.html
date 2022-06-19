@@ -30,6 +30,37 @@
   <!--    Stylesheets-->
   <!-- ===============================================-->
   <link href="{% static '/Home/assets/css/theme.css' %}" rel="stylesheet" />
+  <link href="/static/Home/assets/css/theme.css" rel="stylesheet" />
+
+  <style>
+    
+    #cta:hover{
+      border-width: thick;
+      border-color: #ff9900cd;
+    }
+    #cta:hover .out{
+    display: flex;
+    opacity: 1;
+    transition: opacity 3s;
+    }
+
+    .out{
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    opacity: 0;
+    transition: opacity 3s;
+    }
+
+    .in{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 2em;
+    }
+
+  </style>
 
 </head>
 
@@ -70,10 +101,12 @@
             <p class="mb-6 lead text-secondary">Tools tutorials, design and innovation experts, all<br
                 class="d-none d-xl-block" />in one place! The most intuitive way to imagine<br
                 class="d-none d-xl-block" />your next user experience.</p>
-            <div class="text-center text-md-start"><a class="btn btn-warning me-3 btn-lg" href="#!" role="button">Get
-                started</a><a class="btn btn-link text-warning fw-medium" href="#!" role="button" data-bs-toggle="modal"
-                data-bs-target="#popupVideo"><span class="fas fa-play me-2"></span>Watch the video </a></div>
-          </div>
+            <div class="text-center text-md-start">
+              <a class="btn btn-warning me-3 btn-lg" href="#!" role="button">Get started</a>
+                {% comment %} <a class="btn btn-link text-warning fw-medium" href="#!" role="button" data-bs-toggle="modal"data-bs-target="#popupVideo">
+                  <span class="fas fa-play me-2"></span>Watch the video</a> {% endcomment %}
+              </div>
+            </div>
           <div class="col-md-6 text-end"><img class="pt-7 pt-md-0 img-fluid"
               src="{% static '/Home/assets/img/hero/hero-img.png' %}" alt="" /></div>
         </div>
@@ -247,9 +280,21 @@
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
             <h1 class="fw-bold mb-4 fs-7">Need a super hero?</h1>
-            <p class="mb-5 text-info fw-medium">Do you require some help for your project: Conception
-              workshop,<br />prototyping, marketing strategy, landing page, Ux/UI?</p>
-            <button class="btn btn-warning btn-md">Contact our expert</button>
+            <p class="mb-5 text-info fw-medium">Do you require some help for your project: Conception workshop,<br />prototyping, marketing strategy, landing page, Ux/UI?</p>
+            <button id="cta" class="btn btn-warning btn-md">
+              <span id="ttt">Contact our expert</span>
+              <div class="out">
+                <div class="in">
+                  <span>123456789</span>
+                  <span>123456789</span>
+                  <span>123456789</span>
+                </div>
+                <div class="in">
+                  <span>1234567890@upi</span>
+                  <span>123456789</span>
+                </div>
+              </div>
+            </button>
           </div>
         </div>
       </div><!-- end of .container-->
@@ -268,18 +313,29 @@
       <div class="container">
         <h1 class="fw-bold fs-6 mb-3">Marketing Strategies</h1>
         <p class="mb-6 text-secondary">Join 40,000+ other marketers and get proven strategies on email marketing</p>
-        <div class="row">
+        <div class="row" style="justify-content:space-around;">
+
+          {% for sub in subsType %}
           <div class="col-md-4 mb-4">
-            <div class="card"><img class="card-img-top" src="{% static '/Home/assets/img/marketing/marketing01.png' %}"
+            <div class="card"><img class="card-img-top" src="{{ sub.image.url }}"
                 alt="" />
               <div class="card-body ps-0">
-                <p class="text-secondary">By <a class="fw-bold text-decoration-none me-1" href="#">Abdullah</a>|<span
-                    class="ms-1">03 March 2019</span></p>
-                <h3 class="fw-bold">Increasing Prosperity With Positive Thinking</h3>
+                <h5 class="text-secondary">{{ sub.name }}<!-- <a class="fw-bold text-decoration-none me-1" href="#">Abdullah</a>|<span class="ms-1">03 March 2019</span> --> </h5>
+                <h4 class="fw-bold">{{ sub.headline }}</h4>
+                
+                {% for val in sub.detail_point_value.all|slice:":3" %}
+                <p> {{ val.detail.name }} - "{{ val.value }}"</p>
+
+                {% endfor %} 
+                <h5 class="text-secondary"><a class="fw-bold text-decoration-none me-1" href="#">Click For More Details</a></h5>
+                <a class="btn btn-warning " style="margin-left:0px;" href="/accounts/logout/">Buy ${{ sub.rate }}</a>
               </div>
             </div>
           </div>
-          <div class="col-md-4 mb-4">
+          {% endfor %}
+
+
+          {% comment %} <div class="col-md-4 mb-4">
             <div class="card"><img class="card-img-top" src="{% static '/Home/assets/img/marketing/marketing02.png' %}"
                 alt="" />
               <div class="card-body ps-0">
@@ -298,7 +354,7 @@
                 <h3 class="fw-bold">Success Steps For Your Personal Or Business Life</h3>
               </div>
             </div>
-          </div>
+          </div> {% endcomment %}
         </div>
       </div><!-- end of .container-->
 
@@ -339,7 +395,7 @@
           <div class="col-lg-3 col-md-6 col-6 mb-4 mb-lg-0 order-2 order-md-2 order-lg-4">
             <p class="fs-2 mb-lg-4">
               knowing you're always on the best energy deal.</p>
-            <button class="btn btn-warning fw-medium py-1" href="{% url 'signup' %}">Sign up Now</button>
+              <a href="{% url 'signup' %}"><button class="btn btn-warning fw-medium py-1" > Sign up Now </button></a>
           </div>
         </div>
       </div><!-- end of .container-->
@@ -400,7 +456,7 @@
   <script src="{% static '/Home/vendors/bootstrap/bootstrap.min.js' %}"></script>
   <script src="{% static '/Home/vendors/is/is.min.js' %}"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-  <script src="{% static '/Home/vendors/fontawesome/all.min.js"' %}></script>
+  <script src="{% static '/Home/vendors/fontawesome/all.min.js' %}"></script>
     <script src="{% static ' /Home/assets/js/theme.js' %}"></script>
 
   <link
